@@ -25,3 +25,30 @@
         }
     }
 }
+
+.eventshow{
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+
+    h2{
+        margin-bottom: 20px;
+        
+    }
+    p{
+        font-size: 26px;
+    }
+    .name{
+      color:rgb(160, 67, 13);
+      margin-bottom: 20px;
+    }
+    ul{
+        list-style-type: square;
+        font-size:20px;
+        width:20%;
+        margin:0px auto;
+        li span {
+            position: relative;
+            left: -20%;
+          }
+    }
+}

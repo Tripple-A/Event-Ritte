@@ -4,36 +4,41 @@
 <% else %>
 <%= render 'layouts/headings' %>
 <% end %>
+<div class="eventshow">
+		<h2> Event: <%= @event.title%> </h2>
 
-<h2> Name of Event: <%= @event.title%> </h2>
+		<p> This event was created by  <b class="name"><%= @event.creator.name.capitalize %></b> </p>
+		<br>
+		<% if @invited.empty? %>
+		<p>No invitations have been made</p>
+		<% else %>
+		<p> The following people will be attending: </p>
+		<br>
+		<ul class='attendees'>
+			
+				<% @event.attendees.each do |attendee| %>
+				<li><span><%= attendee.name %> </span></li>
+				<% end %>
+			</ul>	
+			
+			<% end %>
+		</div>
+			<div class="signup">
+					<div class="form-group">
+							<% if @checked %>
+							<%= form_for(@invitation) do |f| %>
+							<%= f.hidden_field :attended_event_id, value: @event.id %>
+							<%= f.hidden_field :host_id, value: @current_user.id %>
+							<%= f.label :attendee_id, 'Invite:' %>
+							<%= f.select :attendee_id, options_for_select(@users.map do |user|
+													   [user.name, user.id]
+														   end),
+																					{ :prompt => 'Select friend' }, class: 'form-control' %>
+							<%= f.submit 'Invite' , class: 'btn btn-primary' %>
+						<% end %>
+						<% end %>
+					</div>
+					
+			</div>
+		
 
-This event was created by  <b><%= @event.creator.name.capitalize %></b>
-<br>
-<% if @invited.empty? %>
-No invitations have been made
-
-
-
-<% else %>
-The following people will be attending:
-<br>
-<ul>
-		<% @event.attendees.each do |attendee| %>
-		<li><%= attendee.name %> </li>
-		<% end %>
-	</ul>	
-	
-	<% end %>
-	
-	<% if @checked %>
-<%= form_for(@invitation) do |f| %>
-	<%= f.hidden_field :attended_event_id, value: @event.id %>
-	<%= f.hidden_field :host_id, value: @current_user.id %>
-	<%= f.label :attendee_id, 'Invite:' %>
-	<%= f.select :attendee_id, options_for_select(@users.map do |user|
-	                           [user.name, user.id]
-				                   end),
-															{ :prompt => 'Select friend' } %>
-	<%= f.submit 'Invite' %>
-<% end %>
-<% end %>
