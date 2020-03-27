@@ -12,9 +12,14 @@
 		<h3 class="desc">Event Description</h3>
 		<p> <%= @event.description %> </p>
 		<% if @invited.empty? %>
-		<p>No invitations have been made</p>
+		<p>No invitations made</p>
 		<% else %>
-		<p> The following people will be attending: </p>
+		<% if @event.date > DateTime.now %>
+		<p> <b> The following people have been invited: </b></p>
+		<% else %>
+		<p> <b> The following people were invited </b></p>
+        <% end %>
+		
 		<br>
 		<ul class='attendees'>
 			
