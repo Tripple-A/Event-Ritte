@@ -1,8 +1,10 @@
 <div class="nav">
+    <div class='logo'>  <a class='li'> EventRiteApp </a></div>
     <%= link_to 'Home', root_path, class: 'li check' %>
-    <%= link_to 'View all Events', events_url, class: 'li check' %>
-  <%= link_to  "Sign Out", signout_path , method: :delete , class: 'li check' %></h2>   
-   <%= link_to  "Create event", events_new_url, class: 'li check' %>
+    <%= link_to  "Profile", @current_user, class: 'li check' %>
+    <%= link_to 'Events', events_url, class: 'li check' %>  
+   <%= link_to  "New event", events_new_url, class: 'li check' %>
+   <%= link_to  "Sign Out", signout_path , method: :delete , class: 'li check' %></h2> 
 </div>
        
       

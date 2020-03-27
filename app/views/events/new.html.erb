@@ -5,18 +5,20 @@
 <%= render 'layouts/headings' %>
 <% end %>
 
-
-<h1>Create a new event</h1>
-
-<%= form_for(:events) do |f| %>
-  <%= f.label :title, "Name of the event" %>
-  <%= f.text_field :title %> <br>
-
-  <%= f.label :description, "Add the event description" %>
-  <%= f.text_area :description %> <br>
-
-  <%= f.label :date, "Date of the event" %>
-  <%= f.date_field :date %>
-  <br>
-  <%= f.submit "Create Event" %>
-<% end %>
+<div class="signup">
+    <div class="form-group">
+        <%= form_for(:events) do |f| %>
+        <%= f.label :title, "Name of the event" %>
+        <%= f.text_field :title ,class: 'form-control' %> <br>
+      
+        <%= f.label :description, "Event description" %>
+        <%= f.text_area :description ,class: 'form-control' %> <br>
+      
+        <%= f.label :date, "Date of the event"  %>
+        <%= f.date_field :date ,class: 'form-control' %>
+        <br>
+        <%= f.submit "Create Event" ,class: 'btn btn-primary'%>
+      <% end %>
+    </div>
+    
+</div>

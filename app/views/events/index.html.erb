@@ -8,30 +8,43 @@
         <% end %>
 </div>
 
+<div class="index">
 
-<% if !@upcoming.empty? %>
-<h2 >These are the upcoming events</h2>
-    <ul>
+<div class="upcoming">
+        <% if !@past.empty? %>
+        <h2>These are the past events</h2>
+        <ul>
+    
+            <% @past.each do |event| %>
+        
+            <li><%= link_to event.title , event %></li>
+        
+            <% end %>
+    
+        </ul>
+    <% end %>
+</div>
+       
 
-        <% @upcoming.each do |event| %>
+ 
+<div>
+        <% if !@upcoming.empty? %>
+        <h2 >These are the upcoming events</h2>
+        <ul>
     
-        <li><%= link_to event.title , event %></li>
-    
+            <% @upcoming.each do |event| %>
+        
+            <li><%= link_to event.title , event %></li>
+        
+            <% end %>
+        </ul>
         <% end %>
+        
+</div>
 
-    </ul>
 
-<% end %> 
-
-<% if !@past.empty? %>
-<h2>These are the past events</h2>
-    <ul>
-
-        <% @past.each do |event| %>
-    
-        <li><%= link_to event.title , event %></li>
-    
-        <% end %>
-
-    </ul>
+<% if @past.empty? && @upcoming.empty? %>
+<h3> There are no created events,be the first to create events</h3> 
 <% end %>
+
+</div>
