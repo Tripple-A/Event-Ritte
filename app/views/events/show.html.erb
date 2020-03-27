@@ -9,6 +9,8 @@
 
 		<p> This event was created by  <b class="name"><%= @event.creator.name.capitalize %></b> </p>
 		<br>
+		<h3 class="desc">Event Description</h3>
+		<p> <%= @event.description %> </p>
 		<% if @invited.empty? %>
 		<p>No invitations have been made</p>
 		<% else %>
