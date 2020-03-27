@@ -3,9 +3,10 @@
 class InvitationsController < ApplicationController
   def create
     @invitation = current_user.invitations.build(invitation_params)
+    event = Event.find(params['invitation']["attended_event_id"])
     if @invitation.save
       flash[:success] = 'Invitation sent!'
-      redirect_to current_user
+      redirect_to event
     else
       flash.now[:danger] = 'There was a problem with your invite. Try again.'
       redirect_to events_index_url
